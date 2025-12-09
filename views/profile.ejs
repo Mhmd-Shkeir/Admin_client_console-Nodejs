@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile</title>
+    <!-- profile.ejs -->
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/profile.css">
+    <link rel="stylesheet" href="/css/profile2.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+
+<body>
+    <nav>
+        <div class="logo">
+            <img src="/img/logonew100.png" alt="Logo">
+        </div>
+        <div class="nav-links">
+            <a href="/">Home</a>
+            <a href="/about">About</a>
+            <a href="/checkout">Checkout</a>
+            <a href="/orders">Orders</a>
+        </div>
+        <div>
+            <a href="/cart" class="search-icon">
+                <img src="/img/store1.svg" alt="Cart" />
+            </a>
+            <a href="/logout" class="cart-icon">
+                <!-- onclick="return confirmLogout();" -->
+                <img src="/img/r1.png" alt="Logout">
+            </a>
+        </div>
+    </nav>
+
+    <!-- Profile Content -->
+    <main class="profile-container">
+        <!-- Welcome Section -->
+        <h1>Welcome, <span id="displayName">
+                <%= user.name %>
+            </span>!</h1>
+        <p><strong>Email:</strong> <span id="displayEmail">
+                <%= user.email %>
+            </span></p>
+        <p><strong>User ID:</strong>
+            <%= user.id %>
+        </p>
+        <p><strong>Role:</strong>
+            <%= user.role %>
+        </p>
+
+        <!-- Notification Banner -->
+        <div id="notificationBanner" class="notification-banner"></div>
+
+        <!-- Action Buttons -->
+        <div class="profile-actions">
+            <button id="modifyProfileBtn" class="btn-action">
+                <i class="fas fa-edit"></i> Modify Profile
+            </button>
+
+        </div>
+        <!-- Modify Profile Form -->
+        <div id="modifyProfileForm" style="display: none;">
+            <form id="updateProfileForm" class="form-container">
+                <div class="form-group">
+                    <label for="updateName">Name:</label>
+                    <input type="text" id="updateName" name="name" value="<%= user.name %>" required
+                        class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="updateEmail">Email:</label>
+                    <input type="email" id="updateEmail" name="email" value="<%= user.email %>" required
+                        class="form-control">
+                </div>
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-success">
+                        <i class="fas fa-save"></i> Save
+                    </button>
+                    <button type="button" id="cancelUpdateBtn" class="btn btn-secondary">
+                        <i class="fas fa-times"></i> Cancel
+                    </button>
+                </div>
+            </form>
+        </div>
+
+        <% if (user.role==="admin" ) { %>
+            <h2>Client Information</h2>
+            <a href="/signup-admin"><button class="btn btn-primary">Create a new user</button></a>
+
+            <% if (requests.length> 0) { %>
+                <h2>Client Requests</h2>
+                <button id="show-wallet-requests-btn" class="btn btn-primary">Wallet Requests</button>
+
+                <% } %>
+
+                    <!-- Modal for Wallet Requests -->
+                    <div id="wallet-requests-modal" class="modal">
+                        <div class="modal-content">
+                            <h2>Wallet Requests</h2>
+                            <div id="wallet-requests-list">
+                                <% if (requests.length> 0) { %>
+                                    <ul>
+                                        <% requests.forEach(request=> { %>
+                                            <li class="request-item" data-request-id="<%= request.id %>">
+                                                <p>
+                                                    User:
+                                                    <a href="#" class="show-client-info"
+                                                        data-user-id="<%= request.user_id %>">
+                                                        <%= request.user_name %>
+                                                    </a>
+                                                </p>
+                                                <p>Total Price: $<%= (Number(request.total_price) || 0).toFixed(2) %>
+                                                </p>
+                                                <p>Status: <%= request.status %>
+                                                </p>
+                                                <button class="accept-request"
+                                                    data-request-id="<%= request.id %>">Accept</button>
+                                                <button class="decline-request"
+                                                    data-request-id="<%= request.id %>">Decline</button>
+                                            </li>
+                                            <% }); %>
+                                    </ul>
+                                    <% } else { %>
+                                        <p>No wallet requests found.</p>
+                                        <% } %>
+                            </div>
+                            <button id="close-wallet-requests-modal" class="btn btn-secondary">Close</button>
+                        </div>
+                    </div>
+
+                    <!-- Confirmation Modal -->
+                    <div id="confirmation-modal" class="modal">
+                        <div class="modal-content">
+                            <h2>Are you sure you want to process this request?</h2>
+                            <div>
+                                <button id="confirm-action" class="btn btn-success">Yes</button>
+                                <button id="cancel-action" class="btn btn-danger">No</button>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <!-- Confirmation Modal -->
+                    <div id="confirmation-modal" class="modal">
+                        <div class="modal-content">
+                            <h2>Are you sure you want to process this request?</h2>
+                            <div>
+                                <button id="confirm-action" class="btn btn-success">Yes</button>
+                                <button id="cancel-action" class="btn btn-danger">No</button>
+                            </div>
+                        </div>
+                    </div>
+                    <% if (user.id===1) { %>
+                        <!-- Table will only be shown to admin with id = 1 -->
+                        <table class="client-table">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                    <th>Role</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <% admins.forEach(admin => { %>
+                                    <tr>
+                                        <td><%= admin.name %></td>
+                                        <td><%= admin.email %></td>
+                                        <td><%= admin.role %></td>
+                                        <td>
+                                            <a href="/admin/client-cart/<%= admin.id %>">View Cart</a> |
+                                            <a href="/admin/client-orders/<%= admin.id %>">View Orders</a> |
+                                            <a href="/admin/delete-user/<%= admin.id %>" 
+                                               onclick="return confirm('Are you sure you want to delete this user?');" 
+                                               class="delete-link">Delete User</a> |
+                                            <% if (admin.id !== 1) { %>
+                                                <a href="/admin/switch-to-client/<%= admin.id %>" 
+                                                   onclick="return confirm('Are you sure you want to switch this admin to a client?');" 
+                                                   class="switch-role">Switch to Client</a>
+                                            <% } %>
+                                        </td>
+                                    </tr>
+                                <% }); %>
+                            </tbody>
+                        </table>
+                        
+                        <% } else { %>
+                            <button id="deleteAccount" class="btn-action">
+                                <i class="fas fa-trash"></i> Delete My Account
+                            </button>
+                            <!-- Table for admins other than admin with id = 1 -->
+                            <table class="client-table">
+                                <thead>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Email</th>
+                                        <th>Role</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <% admins.forEach(admin=> { %>
+                                        <tr>
+                                            <td>
+                                                <%= admin.name %>
+                                            </td>
+                                            <td>
+                                                <%= admin.email %>
+                                            </td>
+                                            <td>
+                                                <%= admin.role %>
+                                            </td>
+                                        </tr>
+                                        <% }); %>
+                                </tbody>
+                            </table>
+                            <% } %>
+                            <table class="client-table">
+                                <thead>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Email</th>
+                                        <th>Role</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <% clients.forEach(client => { %>
+                                        <tr>
+                                            <td><%= client.name %></td>
+                                            <td><%= client.email %></td>
+                                            <td><%= client.role %></td>
+                                            <td>
+                                                <a href="/admin/client-cart/<%= client.id %>">View Cart</a> |
+                                                <a href="/admin/client-orders/<%= client.id %>">View Orders</a> |
+                                                <a href="/admin/delete-user/<%= client.id %>" 
+                                                   onclick="return confirm('Are you sure you want to delete this user?');" 
+                                                   class="delete-link">Delete User</a> |
+                                                <a href="/admin/switch-to-admin/<%= client.id %>" 
+                                                   onclick="return confirm('Are you sure you want to switch this client to an admin?');" 
+                                                   class="switch-role">Switch to Admin</a>
+                                            </td>
+                                        </tr>
+                                    <% }); %>
+                                </tbody>
+                            </table>
+                            
+                                <% } else { %>
+                                    <button id="deleteAccount" class="btn-action">
+                                        <i class="fas fa-trash"></i> Delete My Account
+                                    </button>
+                                    <h2>Your Orders</h2>
+                                    <% if (orders.length> 0) { %>
+                                        <table class="orders-table">
+                                            <thead>
+                                                <tr>
+                                                    <th>Order ID</th>
+                                                    <th>Date</th>
+                                                    <th>Total</th>
+                                                    <th>Status</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <% orders.forEach(order=> { %>
+                                                    <tr>
+                                                        <td>
+                                                            <%= order.id %>
+                                                        </td>
+                                                        <td>
+                                                            <%= new Date(order.created_at).toDateString() %>
+                                                        </td>
+                                                        <td>$<%= (Number(order.total_price) || 0).toFixed(2) %>
+                                                        </td>
+                                                        <td>
+                                                            <%= order.status || "N/A" %>
+                                                        </td>
+                                                    </tr>
+                                                    <% }); %>
+                                            </tbody>
+                                        </table>
+                                        <% } else { %>
+                                            <p>You have no orders yet.</p>
+                                            <% } %>
+                                                <% } %>
+    </main>
+
+    <script src="/js/delete_acc.js"></script>
+
+    <!-- Footer -->
+    <footer class="footer_container">
+        <div class="social-icons">
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+            <a href="#"><i class="fab fa-google-drive"></i></a>
+            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+        <div class="footer_bottom">
+            <p>© 2024 Barca Museum. Designed by <span class="designer">Barca Zone</span></p>
+        </div>
+    </footer>
+
+    <script src="/js/profile.js"></script>
+    <script src="/js/profile2.js"></script>
+
+</body>
+
+
+</html>

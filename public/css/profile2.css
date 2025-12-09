@@ -1,0 +1,255 @@
+
+        /* General Modal Styling */
+        .modal {
+            display: none;
+            /* Initially hidden */
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            /* Darker overlay */
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            padding: 10px;
+        }
+
+        /* Modal Content */
+        .modal-content {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            max-width: 700px;
+            width: 100%;
+            box-shadow: 0 6px 30px rgba(0, 0, 0, 0.15);
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            align-items: center;
+            text-align: center;
+        }
+
+        .modal-content h2 {
+            font-size: 28px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        /* Wallet Requests List */
+        #wallet-requests-list {
+            width: 100%;
+            overflow-y: auto;
+            max-height: 400px;
+            padding: 0 10px;
+        }
+
+        #wallet-requests-list ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        #wallet-requests-list li {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        #wallet-requests-list li:hover {
+            background-color: #e9ecef;
+        }
+
+        #wallet-requests-list p {
+            margin: 0;
+            color: #555;
+            font-size: 16px;
+        }
+
+        #wallet-requests-list a {
+            color: #007bb5;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        /* Buttons */
+        .btn {
+            padding: 12px 25px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn-primary {
+            background-color: #004aad;
+            color: white;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+
+        }
+
+        .btn-primary:hover {
+            background-color: #037cb0;
+            transform: translateY(-2px);
+
+        }
+
+        .btn-secondary {
+            background-color: #ff6f61;
+            color: white;
+        }
+
+        .btn-secondary:hover {
+            background-color: #e65c56;
+        }
+
+        .btn-success {
+            background-color: #0093d2;
+            color: white;
+        }
+
+        .btn-success:hover {
+            background-color: #007bb5;
+
+        }
+
+        .btn-danger {
+            background-color: #ff6f61;
+            color: white;
+        }
+
+        .btn-danger:hover {
+            background-color: #e65c56;
+        }
+
+        /* Modal Footer Buttons (Confirm and Cancel) */
+        #confirmation-modal .btn {
+            width: 120px;
+            margin: 10px;
+            font-size: 16px;
+        }
+
+        /* Close Button */
+        #close-wallet-requests-modal {
+            background-color: #f8f9fa;
+            border: 2px solid #ddd;
+            color: #333;
+            font-weight: bold;
+        }
+
+        #close-wallet-requests-modal:hover {
+            background-color: #e2e6ea;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .modal-content {
+                padding: 20px;
+                width: 90%;
+                max-width: 500px;
+            }
+
+            .btn {
+                font-size: 14px;
+                padding: 10px 18px;
+            }
+
+            #wallet-requests-list li {
+                padding: 12px;
+            }
+        }
+
+        /* Wallet Request List Item */
+        .request-item {
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .request-item:hover {
+            background-color: #e9ecef;
+        }
+
+        .request-item p {
+            margin: 5px 0;
+            color: #555;
+            font-size: 16px;
+        }
+
+        .request-item a {
+            color: #007bb5;
+            text-decoration: none;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .request-item a:hover {
+            text-decoration: underline;
+        }
+
+        /* Accept and Decline Buttons */
+        .accept-request,
+        .decline-request {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 16px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .accept-request {
+            background-color: #0093d2;
+            color: white;
+        }
+
+        .accept-request:hover {
+            background-color: #007bb5;
+        }
+
+        .decline-request {
+            background-color: #ff6f61;
+            color: white;
+        }
+
+        .decline-request:hover {
+            background-color: #e65c56;
+        }
+
+        /* Hover Effects */
+        .accept-request:hover,
+        .decline-request:hover {
+            transform: translateY(-2px);
+        }
+
+        /* Responsive Styling */
+        @media (max-width: 768px) {
+            .request-item {
+                padding: 15px;
+                font-size: 14px;
+            }
+
+            .accept-request,
+            .decline-request {
+                font-size: 14px;
+                padding: 8px 16px;
+            }
+        }
+    

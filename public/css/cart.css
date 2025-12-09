@@ -1,0 +1,212 @@
+/* Forms */
+form {
+    background-color: #ffffff;
+    padding: 3rem;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    max-width: 500px;
+    min-width: 90%;
+    width: 100%;
+    margin: 1.5rem auto;
+    text-align: left;
+}
+
+input {
+    width: 100%;
+    padding: 1rem;
+    border-radius: 10px;
+    margin-bottom: 1rem;
+    border: 1px solid #BDBDBD;
+}
+
+input:focus {
+    border-color: #00A6ED;
+    outline: none;
+}
+
+button {
+    width: 100%;
+    padding: 1rem 2rem;
+    border-radius: 10px;
+    margin: auto auto;
+    margin-bottom: 1rem;
+    display: block;
+    background-color: #0093d2;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #007BB5;
+}
+
+a {
+    text-decoration: none;
+}
+
+p {
+    text-align: center;
+    margin-top: 1rem;
+    padding: 0.5rem;
+}
+
+p a {
+    color: #00A6ED;
+    text-decoration: none;
+    padding: 0.5rem;
+}
+
+p a:hover {
+    text-decoration: underline;
+}
+
+/* Cart Section */
+#checkout-btn {
+    background-color: #123d54;
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: auto;
+}
+
+#checkout-btn:hover {
+    background-color: #0e2d3f;
+}
+
+.cart-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;  /* Vertically align items */
+    margin-bottom: 20px;
+    padding: 15px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 8px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Cart Item Details */
+.cart-item-details {
+    display: flex;
+    justify-content: space-between;  /* Distribute items in a line */
+    width: 80%;  /* Take up most of the space */
+}
+
+.cart-item-details .item-name {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.cart-item-details .item-quantity,
+.cart-item-details .item-price {
+    font-size: 14px;
+}
+
+.cart-item-details .item-remove {
+    display: flex;
+    justify-content: flex-end;  /* Align remove button to the right */
+    width: 20%;  /* Limit the width for the button */
+}
+
+.remove-item {
+    background-color: #0093d2;
+    color: white;
+    font-size: 14px;
+    padding: 8px 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    border: none;
+    transition: background-color 0.3s;
+    margin: 10px;
+    width: 40%;
+}
+
+.remove-item:hover {
+    background-color: #d32f2f;
+}
+
+/* Cart Summary */
+#cart-summary {
+    padding: 20px;
+    background-color: #e3f2fd;
+    border-radius: 8px;
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#cart-summary h3 {
+    font-size: 20px;
+}
+
+#remove-all {
+    padding: 12px 30px;
+    background-color: #0093d2;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    width: 100%;
+}
+
+#remove-all:hover {
+    background-color: #d32f2f;
+}
+
+/* Feedback message container */
+#feedback {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border-radius: 4px;
+    display: none;
+    font-size: 16px;
+}
+
+/* General container for cart items */
+#cart-items-container {
+    margin: 1.5rem 0;
+    padding: 10px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+}
+
+/* Cart item details */
+.cart-item h4 {
+    font-size: 18px;
+    margin-bottom: 5px;
+}
+
+.cart-item p {
+    font-size: 14px;
+    color: #555;
+}
+.item-cart {
+    padding: 1rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    background-color: #fff;
+    box-shadow: 0 1px 8px 2px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    max-width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;  /* Center the text inside the item-cart */
+}
+
+.item-cart h1 {
+    font-size: 24px;  /* Adjust size as needed */
+    font-weight: bold;
+}

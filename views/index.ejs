@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car Wash Service</title>
+    <!-- index.ejs -->
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/Feedback.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+</head>
+
+<body data-loggedin="<%= isLoggedIn ? 'true' : 'false' %>">
+    <nav>
+        <div class="logo">
+            <img src="/img/logonew100.png" alt="Logo">
+        </div>
+        <div class="nav-links">
+            <a href="/" class="nav-item">Home</a>
+            <a href="/about" class="nav-item">About</a>
+            <a href="/checkout" class="nav-item">Checkout</a>
+            <a href="/orders" class="nav-item">Orders</a>
+            <a href="/feedbacks" class="nav-item">feedbacks</a>
+
+        </div>
+        <div>
+            <% if (user) { %>
+                <a href="/cart" class="search-icon nav-item">
+                    <img src="/img/store1.svg" alt="Search" />
+                </a>
+                <a href="/profile" class="search-icon nav-item">
+                    <img src="/img/p2.png" alt="Profile">
+                </a>
+                <% } else { %>
+                    <div class="nav-links">
+                        <a href="/login" class="btn btn-primary">Login</a>
+                        <a href="/signup" class="btn btn-primary">Signup</a>
+                    </div>
+                    <% } %>
+        </div>
+    </nav>
+
+    <!-- Welcome Section -->
+    <!-- <section class="welcome-section">
+        <h1>Welcome to CARWASH-FM the world of car washing</h1>
+
+        <img src="/img/wlc.jpg" alt="Welcome Image" class="welcome-image">
+    </section> -->
+
+    <main class="product-container">
+        <h1>Our Services</h1>
+        <div class="product-grid">
+            <% products.forEach(function(product) { %>
+                <div class="product-card">
+                    <img src="<%= product.image %>" alt="<%= product.name %>" class="product-image">
+                    <h2 class="product-name">
+                        <%= product.name %>
+                    </h2>
+                    <p class="product-description">
+                        <%= product.description %>
+                    </p>
+                    <p class="product-price">$<%= Number(product.price).toFixed(2) %>
+                    </p>
+                    <form action="/add-to-cart" method="POST" class="add-to-cart-form">
+                        <input type="hidden" name="itemId" value="<%= product.id %>">
+                        <input type="hidden" name="name" value="<%= product.name %>">
+                        <input type="hidden" name="price" value="<%= product.price %>">
+                        <button type="submit" class="btn add-to-cart-btn">
+                            <i class="fas fa-plus-circle"></i> Add to Cart</button>
+                    </form>
+                </div>
+                <% }); %>
+        </div>
+    </main>
+
+    <a href="#" id="feedback-link" class="nav-item feedback-center">
+        <button class="feedback-btn">
+            <i class="fas fa-comment-alt"></i> Feedback
+        </button>
+    </a>
+
+    <section id="feedback-section" class="feedback-section" style="display:none;">
+        <div class="feedback-form">
+            <h2>We value your feedback!</h2>
+            <form id="feedback-form">
+                <textarea id="feedback" placeholder="Your feedback here..." required></textarea>
+                <button type="submit">Submit</button>
+            </form>
+            <button id="close-feedback" class="close-feedback">Close</button>
+        </div>
+    </section>
+
+    <footer class="footer_container">
+        <div class="social-icons">
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+            <a href="#"><i class="fab fa-google-drive"></i></a>
+            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+        <div class="footer_bottom">
+            <p>© 2024 Barca Museum. Designed by <span class="designer">Barca Zone</span></p>
+        </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="/js/nav.js"></script>
+
+    <script src="/js/index.js"></script>
+</body>
+
+</html>

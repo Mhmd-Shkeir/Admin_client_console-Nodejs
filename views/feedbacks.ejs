@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedbacks</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/Feedback.css">
+    <link rel="stylesheet" href="/css/profile.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+</head>
+<body>
+
+    <nav>
+        <div class="logo">
+            <img src="/img/logonew100.png" alt="Logo">
+        </div>
+        <div class="nav-links">
+            <a href="/" class="nav-item">Home</a>
+            <a href="/about" class="nav-item">About</a>
+            <a href="/checkout" class="nav-item">Checkout</a>
+            <a href="/orders" class="nav-item">Orders</a>
+        </div>
+        <div>
+            <% if (user) { %>
+                <!-- Display user-specific content here -->
+                <a href="/cart" class="search-icon nav-item">
+                    <img src="/img/store1.svg" alt="Search" />
+                </a>
+                <a href="/profile" class="search-icon nav-item">
+                    <img src="/img/p2.png" alt="Profile">
+                </a>
+            <% } else { %>
+                <!-- Display login/signup buttons if no user is logged in -->
+                <div class="nav-links">
+                    <a href="/login" class="btn btn-primary">Login</a>
+                    <a href="/signup" class="btn btn-primary">Signup</a>
+                </div>
+            <% } %>
+            
+        </div>
+    </nav>
+
+    <main>
+        <h1>User Feedbacks</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>User Name</th>
+                    <th>Feedback</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% feedbacks.forEach(feedback => { %>
+                    <tr>
+                        <td><%= feedback.name %></td>
+                        <td><%= feedback.feedback_text %></td>
+                    </tr>
+                <% }); %>
+            </tbody>
+        </table>
+    </main>
+
+    <footer class="footer_container">
+        <div class="social-icons">
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+            <a href="#"><i class="fab fa-google-drive"></i></a>
+            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+        <div class="footer_bottom">
+            <p>© 2024 Barca Museum. Designed by <span class="designer">Barca Zone</span></p>
+        </div>
+    </footer>
+
+    <script src="/js/nav.js"></script>
+</body>
+</html>

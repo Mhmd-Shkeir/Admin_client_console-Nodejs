@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/order-prof.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <title>Your Orders</title>
+    <!-- orders.ejs -->
+
+</head>
+
+<body>
+    <nav>
+        <div class="logo">
+            <img src="/img/logonew100.png" alt="Logo">
+        </div>
+        <div class="nav-links">
+            <a href="/" class="nav-item">Home</a>
+            <a href="/about" class="nav-item">About</a>
+            <a href="/checkout" class="nav-item">Checkout</a>
+            <a href="/orders" class="nav-item">Orders</a>
+        </div>
+        <div>
+            <a href="/cart" class="search-icon">
+                <img src="/img/store1.svg" alt="Search" />
+            </a>
+            <a href="/profile" class="search-icon">
+                <img src="/img/p2.png" alt="Profile">
+            </a>
+        </div>
+    </nav>
+
+    <main class="profile-container">
+
+        <% if (error) { %>
+            <p class="error-message">
+                <%= error %>
+            </p>
+            <% } %>
+
+                <h2>Your Orders</h2>
+
+                <% if (orders.length> 0) { %>
+                    <table class="orders-table">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Order ID</th>
+                                <th>Total Price</th>
+                                <th>Order Date</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% orders.forEach(order=> { %>
+                                <tr>
+                                    <td>
+                                        <%= user.name %>
+                                    </td>
+                                    <td>
+                                        <%= order.id %>
+                                    </td>
+                                    <td>
+                                        <button class="price-btn" data-order-id="<%= order.id %>">
+                                            $<%= (Number(order.total_price) || 0).toFixed(2) %>
+                                        </button>
+                                    </td>
+                                    <td>
+                                        <%= new Date(order.created_at).toDateString() %>
+                                        
+                                    </td>
+                                    <td>
+                                        <%= order.status %>
+                                    </td>
+                                </tr>
+                                <% }); %>
+                        </tbody>
+                    </table>
+                    <% } else { %>
+                        <p>You have no orders yet.</p>
+                        <% } %>
+    </main>
+
+    <!-- Popup Modal -->
+    <div id="items-popup" class="popup-container" style="display:none;">
+        <div class="popup-content">
+            <h3>Order Items</h3>
+            <div id="items-list"></div>
+            <button id="close-popup" class="close-popup">Close</button>
+        </div>
+    </div>
+
+
+
+    <!-- Footer -->
+    <footer class="footer_container">
+        <div class="social-icons">
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+            <a href="#"><i class="fab fa-google-drive"></i></a>
+            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+        <div class="footer_bottom">
+            <p>© 2024 Barca Museum. Designed by <span class="designer">Barca Zone</span></p>
+        </div>
+    </footer>
+    <script src="/js/nav.js"></script>
+
+</body>
+
+</html>

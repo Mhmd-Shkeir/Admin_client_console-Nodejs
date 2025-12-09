@@ -1,0 +1,100 @@
+
+        /* Custom About Page Styles */
+        .about-container {
+            margin-top: 7rem;
+            padding: 2rem;
+            max-width: 65%;
+        }
+        
+        .about-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .about-header h1 {
+            color: #004aad;
+            font-size: 2rem;
+        }
+        
+        .about-header p {
+            color: #333;
+            font-size: 1rem;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.5;
+        }
+        
+        .about-info h2 {
+            color: #0093d2;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .about-info ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        .about-info ul li {
+            margin: 10px 0;
+            font-size: 1.1rem;
+        }
+        
+        .team-members {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 2rem;
+        }
+        
+        .team-member {
+            text-align: center;
+            max-width: 250px;
+        }
+        
+        .team-member img {
+            width: 100%;
+            border-radius: 50%;
+            margin-bottom: 1rem;
+        }
+        
+        .team-member h3 {
+            color: #004aad;
+            font-size: 1.2rem;
+        }
+        
+        .team-member p {
+            font-size: 1rem;
+            color: #333;
+        }
+        
+        .services {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 2rem;
+        }
+        
+        .service-card {
+            background-color: #f9f9f9;
+            padding: 1rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 30%;
+            text-align: center;
+        }
+        
+        .service-card img {
+            width: 80%;
+            margin-bottom: 1rem;
+        }
+        
+        .service-card h3 {
+            color: #0093d2;
+            font-size: 1.2rem;
+        }
+        
+        .service-card p {
+            color: #333;
+            font-size: 1rem;
+        }
+        
+        

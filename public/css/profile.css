@@ -1,0 +1,187 @@
+.profile-container {
+    width: 30rem;
+    background: white;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    max-height: auto;
+    margin-top: 7rem;
+    margin-bottom: 2rem;
+}
+
+.profile-container h1
+{
+    color: #004aad;
+    margin-bottom: 0.5rem;
+    font-size: 1.8rem;
+    text-align: center;
+} 
+.profile-container h2 {
+    color: #004aad;
+    margin-bottom: 0.5rem;
+    font-size: 1.8rem;
+    text-align: center;
+    margin: 1rem;
+}
+
+.profile-container p {
+    font-size: 1rem;
+    line-height: 1.2;
+    color: #333;
+    margin: 0.5rem;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+    background-color: #ffffff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+table th, table td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: center;
+    font-size: 0.95rem;
+}
+
+table th {
+    background-color: #004aad;
+    color: white;
+    text-transform: uppercase;
+}
+
+table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+table tr:hover {
+    background-color: #e8f4ff;
+    transition: background-color 0.3s ease;
+}
+
+.profile-container a {
+    color: #004aad;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.profile-container a:hover {
+    color: #007bb5;
+    text-decoration: underline;
+}
+
+.btn-action {
+    display: inline-block;
+    padding: 10px 15px;
+    background-color: #004aad;
+    color: white;
+    border:none;
+    border-radius:5px;
+    font-size: 0.9rem;
+    text-decoration: none;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    margin: 0.7rem;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.btn-action:hover {
+    background-color: #d32f2f;
+    border-color:  none; 
+    transform: translateY(-2px);
+}
+
+
+.btn-action2 {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.btn-action2 i {
+    margin-right: 5px;
+}
+
+
+
+.form-container {
+    border: 1px solid #ddd;
+    padding: 20px;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-control {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.form-actions {
+    display: flex;
+    justify-content: space-between;
+}
+
+
+#modifyProfileForm {
+    margin-top: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+.update-message {
+    margin-top: 10px;
+    color: #d9534f;
+    /* Red for errors, change dynamically if needed */
+    font-size: 0.9em;
+}
+
+
+.notification-banner {
+    position: fixed;
+    top: -60px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #28a745;
+    /* Green for success */
+    color: white;
+    padding: 15px 30px;
+    font-size: 16px;
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: top 0.4s ease, opacity 0.4s ease;
+    z-index: 1000;
+    opacity: 0;
+}
+
+.notification-banner.error {
+    background-color: #dc3545;
+    /* Red for error */
+}
+
+.notification-banner.show {
+    top: 20px;
+    opacity: 1;
+}

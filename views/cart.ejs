@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Your Cart</title>
+    <!-- cart.ejs -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/cart.css" />
+    <style>
+        .quantity-controls {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            /* Space between the buttons and the input */
+        }
+
+        .quantity-btn {
+            background-color: #0093d2;
+            color: white;
+            font-size: 16px;
+            padding: 5px 10px;
+            border-radius: 5px;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .quantity-btn:hover {
+            background-color: #007bb5;
+        }
+
+        .quantity-input {
+            width: 50px;
+            text-align: center;
+            font-size: 16px;
+            padding: 5px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-weight: bold;
+            outline: none;
+        }
+
+        .quantity-input:focus {
+            border-color: #00A6ED;
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <div class="logo">
+            <img src="/img/logonew100.png" alt="Logo">
+        </div>
+        <div class="nav-links">
+            <a href="/" class="nav-item">Home</a>
+            <a href="/about" class="nav-item">About</a>
+            <a href="/checkout" class="nav-item">Checkout</a>
+            <a href="/orders" class="nav-item">Orders</a>
+        </div>
+        <div>
+            <a href="/cart" class="search-icon" class="nav-item">
+                <img src="/img/store1.svg" alt="Search" />
+            </a>
+            <a href="/profile" class="search-icon" class="nav-item">
+                <img src="/img/p2.png" alt="Profile">
+            </a>
+        </div>
+    </nav>
+
+    <main>
+        <h1 class="item-cart">Your Cart</h1>
+        <div class="cart-container">
+            <% if (cartItems.length===0) { %>
+                <div class="empty-cart">
+                    <p>Your cart is currently empty.</p>
+                    <a href="/" class="but"><button>Start Shopping</button></a>
+                </div>
+                <% } else { %>
+                    <div class="cart-items">
+                        <% cartItems.forEach(item=> { %>
+                            <div class="cart-item" data-item-id="<%= item.item_id %>">
+                                <h2>
+                                    <%= item.name %>
+                                </h2>
+                                <div class="quantity-controls">
+                                    <button class="btn quantity-btn decrease"
+                                        data-item-id="<%= item.item_id %>">-</button>
+                                    <input type="number" value="<%= item.quantity %>" min="1" max="50"
+                                        class="quantity-input" data-item-id="<%= item.item_id %>" />
+                                    <button class="btn quantity-btn increase"
+                                        data-item-id="<%= item.item_id %>">+</button>
+                                </div>
+                                <p class="item-price">Price: $<%= item.price %>
+                                </p>
+                                <p class="item-total">Total: $<%= (item.price * item.quantity).toFixed(2) %>
+                                </p>
+                                <button class="btn remove-btn remove-item" data-item-id="<%= item.item_id %>">
+                                    <i class="fas fa-trash-alt"></i> Remove Item
+                                </button>
+                            </div>
+                            <% }); %>
+                    </div>
+
+                    <!-- Cart Summary -->
+
+                    <% } %>
+                        <div id="cart-summary">
+                            <h3>Total: $<%= total.toFixed(2) %>
+                            </h3>
+                        </div>
+                        <div class="cart-summary">
+                            <div class="cart-actions">
+                                <button class="btn clear-btn" id="remove-all">
+                                    <i class="fas fa-trash"></i> Remove All Items
+                                </button>
+                                <a href="/checkout" class="but"><button id="checkout-btn">
+                                        <i class="fas fa-shopping-cart"></i> Proceed to Checkout
+                                    </button></a>
+                            </div>
+                        </div>
+        </div>
+
+    </main>
+
+    <footer class="footer_container">
+        <div class="social-icons">
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+            <a href="#"><i class="fab fa-google-drive"></i></a>
+            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+        <div class="footer_bottom">
+            <p>
+                © 2024 Barca Museum. Designed by
+                <span class="designer">Barca Zone</span>
+            </p>
+        </div>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="/js/main.js"></script>
+
+</body>
+
+</html>

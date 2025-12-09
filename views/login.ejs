@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Car Wash Service</title>
+    <!-- login.ejs -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/form.css">
+    
+</head>
+
+<body>
+    <!-- Navbar -->
+
+    <nav>
+        <div class="logo">
+            <img src="/img/logonew100.png" alt="Logo">
+        </div>
+        <div class="nav-links">
+            <a href="/" class="nav-item">Home</a>
+            <a href="/signup" class="nav-item">Signup</a>
+        </div>
+    </nav>
+
+    <!-- Login Form -->
+    <main>
+        <div>
+            <form action="/login" method="POST">
+                <h2>Login to Your Account</h2>
+            
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" placeholder="Enter your email address" required>
+            
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" placeholder="Enter your password" required>
+            
+                <button type="submit">Login</button>
+            
+                <p>Don't have an account? <a href="/signup">Sign Up</a></p>
+            </form>
+        </div>
+    </main>
+
+    <footer class="footer_container">
+        <div class="social-icons">
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+            <a href="#"><i class="fab fa-google-drive"></i></a>
+            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+        <div class="footer_bottom">
+            <p>© 2024 Barca Museum. Designed by <span class="designer">Barca Zone</span></p>
+        </div>
+    </footer>
+
+    <script src="/js/nav.js"></script>
+
+</body>
+
+</html>

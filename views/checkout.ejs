@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout</title>
+    <!-- checkout.ejs -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/payment.css">
+
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav>
+        <div class="logo">
+            <img src="/img/logonew100.png" alt="Logo">
+        </div>
+        <div class="nav-links">
+            <a href="/" class="nav-item">Home</a>
+            <a href="/about" class="nav-item">About</a>
+            <a href="/checkout" class="nav-item">Checkout</a>
+            <a href="/orders" class="nav-item">Orders</a>
+        </div>
+        <div>
+            <a href="/cart" class="search-icon">
+                <img src="/img/store1.svg" alt="Search" />
+            </a>
+            <a href="/profile" class="search-icon">
+                <img src="/img/p2.png" alt="Profile">
+            </a>
+        </div>
+    </nav>
+
+
+    <main class="payment-page">
+        <section class="payment-form dark">
+            <div class="container">
+                <div class="block-heading">
+                    <h2 class="text-primary">Payment Checkout</h2>
+                    <p>Review and confirm your order before making the payment.</p>
+                </div>
+                <form action="/checkout/confirm" method="POST">
+                    <!-- Products Section -->
+                    <div class="products shadow-sm rounded mb-4">
+                        <h3 class="title">Order Summary</h3>
+                        <% if (cartItems.length===0) { %>
+                            <p class="text-center text-muted">Your cart is empty. Please add items to your cart.</p>
+                            <% } else { %>
+                                <% cartItems.forEach(item=> { %>
+                                    <div class="item d-flex align-items-center">
+                                        <p class="item-name mb-0 flex-grow-2 text-left">
+                                            <%= item.name %>
+                                        </p>
+                                        <p class="item-quantity mb-0 flex-grow-1 text-center">
+                                            <%= item.quantity %>
+                                        </p>
+                                        <p class="price mb-0 flex-grow-1 text-right">$<%= item.price %>
+                                        </p>
+                                    </div>
+                                    <% }); %>
+                                        <div class="total mt-3 text-center">
+                                            <strong>Total: $<%= totalPrice.toFixed(2) %></strong>
+                                        </div>
+                                        <% } %>
+                    </div>
+
+                    <!-- Additional Payment Options Section -->
+                    <div class="new-section shadow-sm rounded mb-4 p-3">
+                        <h4 class="mb-3">Additional Payment Options</h4>
+                        <button type="button" class="btn btn-info btn-block">
+                            <i class="fab fa-paypal"></i> Pay with PayPal
+                        </button>
+                        <input type="hidden" name="isWalletPayment" id="isWalletPayment" value="false">
+                        <!-- Other fields here -->
+                        <button type="button" class="btn btn-warning btn-block mt-2" id="payWalletBtn">
+                            <i class="fas fa-wallet"></i> Pay with Wallet
+                        </button>
+                    </div>
+
+                    <!-- Card Details Section -->
+                    <div class="card-details shadow-sm rounded p-4">
+                        <h3 class="title mb-3">Payment Details</h3>
+                        <div class="row">
+                            <div class="form-group col-sm-7">
+                                <label for="card-holder">Card Holder</label>
+                                <input id="card-holder" type="text" name="cardHolder" class="form-control"
+                                    placeholder="Card Holder" required>
+                            </div>
+                            <div class="form-group col-sm-5">
+                                <label for="">Expiration Date</label>
+                                <div class="input-group">
+                                    <input type="text" name="expMonth" class="form-control" placeholder="MM" required>
+                                    <span class="date-separator">/</span>
+                                    <input type="text" name="expYear" class="form-control" placeholder="YY" required>
+                                </div>
+                            </div>
+                            <div class="form-group col-sm-12">
+                                <label for="card-number">Card Number</label>
+                                <input id="card-number" type="text" name="cardNumber" class="form-control"
+                                    placeholder="Card Number" required>
+                            </div>
+                            <div class="form-group col-sm-12">
+                                <label for="cvc">CVC</label>
+                                <input id="cvc" type="text" name="cvc" class="form-control" placeholder="CVC" required>
+                            </div>
+                        </div>
+                        <a href="/cart" class="btn btn-outline-primary btn-block mt-3">
+                            <i class="fas fa-shopping-cart"></i> Back to Cart
+                        </a>
+                        <button type="submit" class="btn btn-primary btn-block mt-2">
+                            <i class="fas fa-credit-card"></i> Confirm Payment
+                        </button>
+                    </div>
+                </form>
+
+            </div>
+        </section>
+    </main>
+
+
+    <!-- Footer -->
+    <footer class="footer_container">
+        <div class="social-icons">
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+            <a href="#"><i class="fab fa-google-drive"></i></a>
+            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+        <div class="footer_bottom">
+            <p>© 2024 Barca Museum. Designed by <span class="designer">Barca Zone</span></p>
+        </div>
+    </footer>
+
+    <script src="/js/nav.js"></script>
+    <script>
+        document.getElementById('payWalletBtn').addEventListener('click', () => {
+            if (confirm('Are you sure you want to pay with wallet?')) {
+                document.getElementById('isWalletPayment').value = 'true';
+                document.querySelector('form').submit();
+            }
+        });
+    </script>
+    
+</body>
+
+</html>

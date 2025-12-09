@@ -1,0 +1,262 @@
+    main {
+        margin-top: 4rem;
+    }
+
+    .payment-form {
+        padding-bottom: 50px;
+        font-family: 'Montserrat', sans-serif;
+    }
+
+    .payment-form.dark {
+        background-color: #f6f6f6;
+    }
+
+    .payment-form .content {
+        box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.075);
+        background-color: white;
+    }
+
+    .payment-form .block-heading {
+        padding-top: 50px;
+        margin-bottom: 40px;
+        text-align: center;
+    }
+
+    .payment-form .block-heading p {
+        text-align: center;
+        max-width: 420px;
+        margin: auto;
+        opacity: 0.7;
+    }
+
+    .payment-form.dark .block-heading p {
+        opacity: 0.8;
+    }
+
+    .payment-form .block-heading h1,
+    .payment-form .block-heading h2,
+    .payment-form .block-heading h3 {
+        margin-bottom: 1.2rem;
+        color: #0093d2;
+    }
+
+    .payment-form form {
+        border-top: 2px solid #0093d2;
+        box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.075);
+        background-color: #ffffff;
+        padding: 0;
+        max-width: 600px;
+        margin: auto;
+    }
+
+    .payment-form .title {
+        font-size: 1em;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        margin-bottom: 0.8em;
+        font-weight: 600;
+        padding-bottom: 8px;
+    }
+
+    .payment-form .products {
+        background-color: #f7fbff;
+        padding: 25px;
+    }
+
+    .payment-form .products .item {
+        margin-bottom: 1em;
+    }
+
+    .payment-form .products .item-name {
+        font-weight: 600;
+        font-size: 0.9em;
+    }
+
+    .payment-form .products .item-description {
+        font-size: 0.8em;
+        opacity: 0.6;
+    }
+
+    .payment-form .products .item p {
+        margin-bottom: 0.2em;
+    }
+
+    .payment-form .products .price {
+        float: right;
+        font-weight: 600;
+        font-size: 0.9em;
+    }
+
+    .payment-form .products .total {
+        border-top: 1px solid rgba(0, 0, 0, 0.1);
+        padding-top: 2.3rem;
+        font-weight: 600;
+        font-size: 1.4rem;
+        line-height: 1;
+    }
+
+    .payment-form .card-details {
+        padding: 2rem 2rem 1.5rem;
+    }
+
+    .payment-form .card-details label {
+        font-size: 12px;
+        font-weight: 600;
+        margin-bottom: 15px;
+        color: #79818a;
+        text-transform: uppercase;
+    }
+
+    .payment-form .card-details button {
+        margin-top: 0.6em;
+        padding: 12px 0;
+        font-weight: 600;
+    }
+
+    .payment-form .date-separator {
+        margin-left: 10px;
+        margin-right: 10px;
+        margin-top: 5px;
+    }
+
+    @media (min-width: 576px) {
+        .payment-form .title {
+            font-size: 1.2em;
+        }
+
+        .payment-form .products {
+            padding: 40px;
+        }
+
+        .payment-form .products .item-name {
+            font-size: 1em;
+        }
+
+        .payment-form .products .price {
+            font-size: 1em;
+        }
+
+        .payment-form .card-details {
+            padding: 40px 40px 30px;
+        }
+
+        .payment-form .card-details button {
+            margin-top: 2em;
+        }
+    }
+
+ /* Customize the 'Back to Cart' button (anchor link) */
+a.btn-outline-primary {
+    background-color: #fff;
+    border-color: #0093d2;
+    color: #0093d2;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+a.btn-outline-primary:hover {
+    background-color: #0093d2; /* Darker shade on hover */
+    border-color: #0093d2;
+}
+
+/* Customize the 'Confirm Payment' button */
+button.btn-primary {
+    background-color: #0093d2;
+    border-color: #0093d2;
+    color: #fff;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+button.btn-primary:hover {
+    background-color: #007bb5; /* Darker shade on hover */
+    border-color: #007bb5;
+}
+
+
+
+
+/* Change the color of the "Payment Checkout" heading */
+/* Override the Bootstrap default .text-primary color */
+.text-primary {
+    color: #0093d2 !important;
+    margin: -2rem;
+}
+
+/* Override the buttons to use your custom blue color */
+.btn-primary, .btn-outline-primary {
+    background-color: #0093d2;
+    border-color: #0093d2;
+    color: white;
+}
+
+.btn-primary:hover, .btn-outline-primary:hover {
+    background-color: #007bb5;
+    border-color: #007bb5;
+    color: white;
+}
+
+.btn-outline-primary {
+    background-color: transparent;
+    color: #0093d2;
+}
+
+.btn-outline-primary:hover {
+    background-color: #0093d2;
+    color: white;
+}
+/* Style for the quantity */
+.item-quantity {
+    font-size: 1rem; /* Adjust as needed */
+    font-weight: 600;
+    color: #0093d2;  /* Set to the same blue as the price */
+    margin: 0;  /* Remove margin */
+    padding: 0.5rem;
+    text-align: center;  /* Align the quantity in the center */
+    min-width: 40px; /* Add a minimum width to avoid collapsing */
+}
+
+.products .item {
+    display: flex;
+    justify-content: space-between; /* Ensures space between columns */
+    align-items: center;           /* Aligns items vertically */
+    border-bottom: 1px solid #ddd; /* Subtle border between rows */
+    padding: 0.5rem 0;
+}
+
+
+
+
+.products .item {
+    display: flex;
+    justify-content: space-between; /* Spread columns across available space */
+    align-items: center;           /* Vertically center items */
+    border-bottom: 1px solid #ddd; /* Subtle border between rows */
+    padding: 0.5rem 0;
+}
+
+.products .item-name {
+    flex: 2; /* Give more space to the item name */
+    font-weight: bold;
+    color: #2c3e50; /* Darker color for better readability */
+    text-align: left; /* Align the name to the left */
+    margin: 0;
+    padding-right: 1rem; /* Add space between name and quantity */
+}
+
+.products .item-quantity {
+    flex: 1; /* Ensure quantity takes equal space */
+    font-size: 1rem;
+    font-weight: 600;
+    color: #0093d2; /* Matches the theme */
+    text-align: center; /* Center-align the quantity */
+    margin: 0;
+}
+
+.products .price {
+    flex: 1; /* Ensure price takes equal space */
+    font-size: 1rem;
+    font-weight: bold;
+    color: #0093d2; /* Matches the theme */
+    text-align: right; /* Align price to the right */
+    margin: 0;
+    padding-left: 1rem; /* Add space between quantity and price */
+}
+

@@ -1,0 +1,168 @@
+
+.remove-item {
+    background-color: #0093d2; /* Blue for remove */
+    color: white;
+    font-size: 14px;
+    padding: 8px 12px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    display: flex; /* Keep flex to align icon and text horizontally */
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    font-weight: bold;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    min-width: 120px; /* Ensure the button has sufficient width */
+    height: auto; /* Allow height to adjust */
+}
+
+.remove-item:hover {
+    background-color: #d32f2f; /* Darker red on hover */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.remove-item i {
+    font-size: 16px;
+}
+
+/* Layout of the cart item */
+.cart-item {
+    display: flex;
+    justify-content: space-between; /* Ensure space between item details and remove button */
+    align-items: center;
+    padding: 15px;
+    margin-bottom: 10px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Layout of the item details */
+.cart-item-details {
+    display: flex;
+    justify-content: space-between; /* Space between item name, quantity, price, and total */
+    gap: 15px; /* Increased gap for better spacing */
+    flex-grow: 1;
+    align-items: center;
+}
+
+/* Styling individual item details */
+.item-name,
+.item-quantity,
+.item-price,
+.item-total {
+    font-size: 14px;
+    color: #333;
+    flex-shrink: 0; /* Prevent shrinking */
+}
+
+/* Styling the remove button container */
+.item-remove {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px; /* Space between the icon and the text */
+}
+
+/* Style for the "Select Product" dropdown */
+#product-name {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+    background-color: #f9f9f9;
+    color: #333;
+    margin-bottom: 10px;
+    transition: border-color 0.3s ease;
+}
+
+#product-name:focus {
+    border-color: #00A6ED; /* Highlight border on focus */
+    outline: none;
+}
+
+/* Style for the "Add Item" button */
+.add-item-btn {
+    background-color: #4caf50; /* Green for success */
+    color: white;
+    font-size: 16px;
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    transition: background-color 0.3s ease, transform 0.2s;
+}
+
+.add-item-btn:hover {
+    background-color: #388e3c; /* Darker green */
+    transform: scale(1.05);
+}
+
+/* General Form Adjustments */
+form .form-group {
+    margin-bottom: 20px;
+}
+
+form #total-price {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #555;
+}
+
+
+
+
+
+
+/* Cart Item Quantity Controls */
+.cart-item .item-quantity {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 0.6rem 0;
+    margin-bottom: -0.1rem;
+    font-size: 16px;
+}
+
+.quantity-btn {
+    background-color: #00A6ED; /* Blue color for buttons */
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.quantity-btn:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+}
+
+.quantity-btn:disabled {
+    background-color: #cccccc; /* Gray for disabled state */
+    cursor: not-allowed;
+}
+
+.quantity-value {
+    font-weight: bold;
+    font-size: 18px;
+    min-width: 30px;
+    text-align: center;
+    display: inline-block;
+}
+
+/* Cart Item Total Styling */
+.cart-item .item-total {
+    margin-top: 10px;
+    font-weight: bold;
+    color: #333;
+}

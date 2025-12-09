@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Cart</title>
+    <!--client-cart.ejs -->
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <nav>
+        <div class="logo">
+            <img src="/img/logonew100.png" alt="Logo">
+        </div>
+        <div class="nav-links">
+            <a href="/" class="nav-item">Home</a>
+            <a href="/about" class="nav-item">About</a>
+            <a href="/checkout" class="nav-item">Checkout</a>
+            <a href="/orders" class="nav-item">Orders</a>
+        </div>
+        <div>
+            <a href="/cart" class="search-icon">
+                <img src="/img/store1.svg" alt="Search" />
+            </a>
+            <a href="/profile" class="search-icon">
+                <img src="/img/p2.png" alt="Profile">
+            </a>
+        </div>
+    </nav>
+
+    <main>
+        <h1>Your Cart</h1>
+        <div id="cart-items-container">
+            <% if (cartItems.length === 0) { %>
+                <p>Your cart is currently empty.</p>
+                <a href="/" class="button">Go back shopping</a>
+            <% } else { %>
+                <ul>
+                    <% cartItems.forEach((item) => { %>
+                        <li>
+                            <h3><%= item.name %> - $<%= item.price %> (x<%= item.quantity %>)</h3>
+                            <button class="remove-item" data-id="<%= item.item_id %>">Remove</button>
+                        </li>
+                    <% }); %>
+                </ul>
+                <p>Total: $<%= total.toFixed(2) %></p>
+                <button id="remove-all">Clear Cart</button>
+                <a href="/checkout" class="button">Proceed to Checkout</a>
+            <% } %>
+        </div>
+    </main>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="/js/client-cart.js"></script>
+</body>
+</html>

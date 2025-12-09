@@ -1,0 +1,179 @@
+/* Center the feedback form overlay */
+.feedback-section {
+    display: none;
+    /* Hidden by default */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    /* Semi-transparent background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* Vertically and horizontally center the form */
+    z-index: 1000;
+}
+
+/* Style for the feedback form */
+.feedback-form {
+    background-color: #fff;
+    padding: 2rem;
+    border-radius: 8px;
+    width: 100%;
+    max-width: 500px;
+    /* Limit form width */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.feedback-form h2 {
+    margin-bottom: 1.5rem;
+    color: #123d54;
+}
+
+.feedback-form textarea {
+    width: 100%;
+    height: 150px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 1rem;
+    resize: none;
+}
+
+.feedback-form button {
+    background-color: #123d54;
+    color: #fff;
+    padding: 0.8rem 1.5rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+.feedback-form button:hover {
+    background-color: #ff6f61;
+}
+
+.close-feedback {
+    background-color: #ff6f61;
+    color: #fff;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-top: 1rem;
+    font-size: 1rem;
+}
+
+.close-feedback:hover {
+    background-color: #123d54;
+}
+
+
+
+/* Style for feedback link container */
+.feedback-center {
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    margin: 2rem auto; /* Add space around the button */
+    width: 50%; /* Adjust width to your preference */
+    text-decoration: none;
+    margin-bottom: 6rem;
+}
+
+/* Style for the feedback button */
+.feedback-btn {
+    background-color: #ff6f61; /* Coral Orange */
+    color: #fff;
+    font-size: 1.2rem;
+    font-weight: bold;
+    padding: 0.8rem 2rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    width: 80%; /* Full width of the container */
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.feedback-btn:hover {
+    background-color: #e65a4f; /* Darker shade of Coral */
+    transform: scale(1.05); /* Slightly enlarge the button on hover */
+    /* text-transform: uppercase; */
+
+}
+
+
+
+
+
+
+
+
+
+
+/* Close Button Styling */
+
+
+/* Feedback Form Styling */
+.feedback-form {
+    position: relative;
+    padding: 20px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.feedback-form textarea {
+    width: 100%;
+    height: 100px;
+    margin-bottom: 10px;
+}
+
+.feedback-form select {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.feedback-form button {
+    padding: 10px 20px;
+    background-color: #0093d2;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.feedback-form button:hover {
+    background-color: #003ab8;
+}
+
+/* Message Window Styling */
+.message-window {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+    border-radius: 5px;
+    display: none;  /* Hidden by default */
+}
+
+.message-window.success {
+    background-color: #d4edda;
+    color: #155724;
+    border-color: #c3e6cb;
+}
+
+.message-window.error {
+    background-color: #f8d7da;
+    color: #721c24;
+    border-color: #f5c6cb;
+}
